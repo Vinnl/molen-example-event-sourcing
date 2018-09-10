@@ -15,7 +15,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "molen": "^0.1.0-master-7996e224d182adaf6d08dda6a840de98012130c9",
+    "molen": "^0.1.0-master-59b9dad056563cc734ebc828fae61c985b7f3929",
     "rxjs": "^6.3.2"
   }
 }
