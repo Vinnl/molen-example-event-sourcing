@@ -13,7 +13,8 @@
   </form>
 
 <script language="javascript" type="text/javascript">
-  const wsUri = `ws://${document.location.host}/`;
+  const protocol = document.location.protocol === 'https:' ? 'wss' : 'ws';
+  const wsUri = `${protocol}://${document.location.host}/`;
   let messagesElement;
   let status = 'offline';
 
