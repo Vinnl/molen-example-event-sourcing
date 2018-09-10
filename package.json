@@ -2,6 +2,7 @@
   "name": "molen-example-event-sourcing",
   "version": "0.0.1",
   "scripts": {
+    "start": "node index.js",
     "postinstall": "tsc"
   },
   "description": "An example Molen application",
@@ -12,5 +13,9 @@
   "devDependencies": {
     "@types/node": "^10.9.4",
     "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "molen": "^0.1.0-master-7996e224d182adaf6d08dda6a840de98012130c9",
+    "rxjs": "^6.3.2"
   }
 }
