@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  app:
+    image: molen-example-event-sourcing
+    build: 
+      context: .
+      dockerfile: docker/app/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+    - .:/usr/src/app/:rw
+    # Prevent locally installed node_modules from being mounted inside the container.
+    - /usr/src/app/node_modules
+    links:
+      - database
+    environment:
+      - DATABASE_URL=postgres://postgres:@database/molen_example_db
+  # Make a PostgreSQL database available at database:5432
+  database:
+    build:
+      context: .
+      dockerfile: docker/database/Dockerfile
+    ports:
+      - 5432:5432
+  # Useful during development: inspect the database at localhost:1337
+  # See the environment variables listed at `web` above for credentials:
+  adminer:
+    image: adminer
+    ports:
+      - 1337:8080

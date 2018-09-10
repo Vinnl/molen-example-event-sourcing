@@ -1,6 +1,8 @@
 import * as WebSocket from 'molen/dist/drivers/websocket';
-import { merge } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { merge, Subject } from 'rxjs';
+import { map, withLatestFrom, filter, tap } from 'rxjs/operators';
+import { setDatabaseStream } from './database';
+import { Message } from './entity/Message';
 
 interface ConnectionResponse {
   user: string;
@@ -11,11 +13,27 @@ interface MessageResponse {
 }
 type Response = MessageResponse | ConnectionResponse;
 
+
 export const chatServer: WebSocket.WebSocketHandler = (input$) => {
-  return merge(
+  const responses$ = merge(
     newConnections(input$),
     messages(input$),
   );
+
+  setDatabaseStream(responses$.pipe(
+    filter(response => typeof response.broadcast === 'string'),
+    map((response) => {
+      // TODO: Represent all possible message types here
+      const data: MessageResponse = JSON.parse(response.broadcast as string)
+      const row = new Message();
+      row.user = data.user;
+      row.content = data.message;
+
+      return row;
+    }),
+  ));
+
+  return responses$;
 };
 
 const newConnections: WebSocket.WebSocketHandler = (input$) => {

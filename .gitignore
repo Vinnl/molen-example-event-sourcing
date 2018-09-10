@@ -1,3 +1,5 @@
-*.js
-*.d.ts
+src/*.js
+src/*.d.ts
+index.js
+index.d.ts
 node_modules
