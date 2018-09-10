@@ -1,0 +1,109 @@
+ <!DOCTYPE html>
+  <meta charset="utf-8" />
+  <title>Example Molen application</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <h1>Chat</h1>
+
+  <section id="messages"></section>
+
+  <form id="chatbox">
+    <input name="message" type="text"/>
+    <input type="submit" value="Send"/>
+  </form>
+
+<script language="javascript" type="text/javascript">
+  const wsUri = `ws://${document.location.host}/`;
+  let messagesElement;
+  let status = 'offline';
+
+  function init()
+  {
+    messagesElement = document.getElementById('messages');
+    testWebSocket();
+  }
+
+  function setStatus(statusToSet) {
+    if (statusToSet === 'connected') {
+      status = statusToSet;
+    }
+    status = 'offline';
+  }
+
+  function testWebSocket()
+  {
+    websocket = new WebSocket(wsUri);
+    websocket.onopen = function(evt) { onOpen(evt) };
+    websocket.onclose = function(evt) { onClose(evt) };
+    websocket.onmessage = function(evt) { onMessage(evt) };
+    websocket.onerror = function(evt) { onError(evt) };
+  }
+
+  function onOpen(evt)
+  {
+    setStatus('connected');
+    websocket.send('connect');
+  }
+
+  function onClose(evt)
+  {
+    setStatus('offline');
+  }
+
+  function onMessage(evt)
+  {
+    const data = JSON.parse(evt.data);
+    showMessage(data.message, data.user);
+  }
+
+  function onError(evt)
+  {
+    showError(evt.data);
+  }
+
+  function sendMessage(message)
+  {
+    showMessage(message, 'You');
+    websocket.send('msg:' + message);
+  }
+
+  function showMessage(message, author) {
+    const messageElement = document.createElement('p');
+    messageElement.classList.add('message');
+
+    const authorElement = document.createElement('span');
+    authorElement.classList.add('author');
+    authorElement.textContent = author;
+
+    const messageTextElement = document.createElement('span');
+    messageTextElement.classList.add('messageText');
+    messageTextElement.textContent = message;
+
+    messageElement.appendChild(authorElement);
+    messageElement.appendChild(messageTextElement);
+
+    messagesElement.appendChild(messageElement);
+  }
+
+  function showError(error) {
+    const errorElement = document.createElement('p');
+    errorElement.classList.add('error');
+
+    errorElement.textContent = error;
+
+    messagesElement.appendChild(errorElement);
+  }
+
+  function handleMessage(event) {
+    event.preventDefault();
+
+    const messageElement = event.target.elements.message;
+    const message = messageElement.value;
+    sendMessage(message);
+    messageElement.value = '';
+  }
+
+  window.addEventListener("load", init, false);
+  document.getElementById('chatbox').addEventListener("submit", handleMessage);
+
+  </script>
