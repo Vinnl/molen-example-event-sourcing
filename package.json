@@ -1,0 +1,16 @@
+{
+  "name": "molen-example-event-sourcing",
+  "version": "0.0.1",
+  "scripts": {
+    "postinstall": "tsc"
+  },
+  "description": "An example Molen application",
+  "main": "index.js",
+  "author": "Vincent <projects@vinnl.nl>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "typescript": "^3.0.3"
+  }
+}
