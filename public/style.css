@@ -1,0 +1,35 @@
+body {
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 200px auto;
+  color: white;
+}
+
+.message .author {
+  grid-column: 1;
+  display: block;
+  background: #555;
+  padding: 0.5rem 1rem;
+}
+
+.message .messageText {
+  grid-column: 2;
+  display: block;
+  background: #444;
+  border-left: #666;
+  padding: 0.5rem 1rem;
+}
+
+#chatbox {
+  display: grid;
+  grid-template-columns: auto 100px;
+}
+
+#chatbox input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
