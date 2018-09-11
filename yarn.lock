@@ -855,9 +855,9 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-molen@^0.1.0-master-7cc56163dd472067bd585d477c0c74ee92d58393:
-  version "0.1.0-master-7cc56163dd472067bd585d477c0c74ee92d58393"
-  resolved "https://registry.yarnpkg.com/molen/-/molen-0.1.0-master-7cc56163dd472067bd585d477c0c74ee92d58393.tgz#a8e5a1a1385d0b2688e342f802249a29207ee12c"
+molen@^0.1.0-master-59ea9578c5117c642a2b65861b29f39d671a03bb:
+  version "0.1.0-master-59ea9578c5117c642a2b65861b29f39d671a03bb"
+  resolved "https://registry.yarnpkg.com/molen/-/molen-0.1.0-master-59ea9578c5117c642a2b65861b29f39d671a03bb.tgz#f7e9f79d07a447a3a937f8d690c1c974e20771ef"
   dependencies:
     "@types/aws-lambda" "^8.10.11"
     "@types/express" "^4.16.0"

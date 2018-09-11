@@ -1,5 +1,5 @@
-import * as Http from 'molen/dist/drivers/http';
-import * as WebSocket from 'molen/dist/drivers/websocket';
+import * as Http from 'molen/drivers/http';
+import * as WebSocket from 'molen/drivers/websocket';
 import { resolve } from 'path';
 
 import { chatServer } from './src/chatServer';

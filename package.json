@@ -19,7 +19,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "molen": "^0.1.0-master-7cc56163dd472067bd585d477c0c74ee92d58393",
+    "molen": "^0.1.0-master-59ea9578c5117c642a2b65861b29f39d671a03bb",
     "pg": "^7.4.3",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.3.2",

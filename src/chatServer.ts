@@ -1,6 +1,6 @@
-import * as WebSocket from 'molen/dist/drivers/websocket';
-import { merge, Subject } from 'rxjs';
-import { map, withLatestFrom, filter, tap } from 'rxjs/operators';
+import * as WebSocket from 'molen/drivers/websocket';
+import { merge } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 import { setDatabaseStream } from './database';
 import { Message } from './entity/Message';
 
