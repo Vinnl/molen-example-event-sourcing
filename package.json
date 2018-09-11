@@ -4,7 +4,7 @@
   "scripts": {
     "watch": "ts-node-dev index.ts",
     "start": "node index.js",
-    "postinstall": "tsc",
+    "heroku-postbuild": "tsc",
     "create-migration": "ts-node-dev ./node_modules/.bin/typeorm migration:create -n ",
     "generate-migration": "ts-node-dev ./node_modules/.bin/typeorm migration:generate -n "
   },
