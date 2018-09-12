@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "watch": "ts-node-dev index.ts",
+    "test": "jest",
     "start": "node index.js",
     "heroku-postbuild": "tsc",
     "create-migration": "ts-node-dev ./node_modules/.bin/typeorm migration:create -n ",
@@ -14,7 +15,10 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@types/jest": "^23.3.2",
     "@types/node": "^10.9.4",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.1.4",
     "ts-node-dev": "^1.0.0-pre.30",
     "typescript": "^3.0.3"
   },

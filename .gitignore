@@ -3,3 +3,4 @@ src/*.d.ts
 index.js
 index.d.ts
 node_modules
+coverage
