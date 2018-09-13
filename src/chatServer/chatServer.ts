@@ -1,8 +1,9 @@
 import * as WebSocket from 'molen/drivers/websocket';
 import { merge, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { setDatabaseStream } from './database';
-import { Message } from './entity/Message';
+
+import { setDatabaseStream } from '../database';
+import { Message } from '../entity/Message';
 
 interface MessageResponse {
   user: string;

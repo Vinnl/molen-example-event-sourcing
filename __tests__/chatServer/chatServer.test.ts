@@ -1,11 +1,11 @@
-jest.mock('../src/database.ts', () => ({ setDatabaseStream: jest.fn() }));
+jest.mock('../../src/database.ts', () => ({ setDatabaseStream: jest.fn() }));
 
 import { TestScheduler } from 'rxjs/testing';
 import { of, from } from 'rxjs';
 
-import { verifyValues } from './testHelpers';
-import { chatServer } from '../src/chatServer';
-import { Message } from '../src/entity/Message';
+import { verifyValues } from '../testHelpers';
+import { chatServer } from '../../src/chatServer/chatServer';
+import { Message } from '../../src/entity/Message';
 
 const scheduler = new TestScheduler((actual, expected) => expect(actual).toEqual(expected));
 
