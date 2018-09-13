@@ -5,7 +5,7 @@
     "watch": "ts-node-dev index.ts",
     "test": "jest",
     "start": "cd dist/; node index.js",
-    "heroku-postbuild": "tsc; cp ormconfig.js dist/;",
+    "heroku-postbuild": "tsc; cp ormconfig.js dist/; mkdir -p dist/public/; cp public/* dist/public/",
     "create-migration": "ts-node-dev ./node_modules/.bin/typeorm migration:create -n ",
     "generate-migration": "ts-node-dev ./node_modules/.bin/typeorm migration:generate -n "
   },
