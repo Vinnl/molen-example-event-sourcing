@@ -7,6 +7,9 @@ body {
   grid-template-columns: 200px auto;
   color: white;
 }
+.message.is-archive {
+  opacity: 0.5;
+}
 
 .message .author {
   grid-column: 1;

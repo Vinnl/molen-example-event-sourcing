@@ -21,7 +21,27 @@
   function init()
   {
     messagesElement = document.getElementById('messages');
+
+    fetchArchive();
     testWebSocket();
+  }
+
+  function fetchArchive() {
+    return fetch('/api/messages').then(showArchive);
+  }
+
+  async function showArchive(data) {
+    const archive = await data.json();
+
+    const elements = archive
+      .map((message) => createMessageElement(message.content, message.user))
+      .map((element) => {
+        element.classList.add('is-archive');
+
+        return element;
+      });
+
+    elements.forEach((element) => messagesElement.prepend(element));
   }
 
   function setStatus(statusToSet) {
@@ -68,7 +88,7 @@
     websocket.send('msg:' + message);
   }
 
-  function showMessage(message, author) {
+  function createMessageElement(message, author) {
     const messageElement = document.createElement('p');
     messageElement.classList.add('message');
 
@@ -82,6 +102,12 @@
 
     messageElement.appendChild(authorElement);
     messageElement.appendChild(messageTextElement);
+
+    return messageElement;
+  }
+
+  function showMessage(message, author) {
+    const messageElement = createMessageElement(message, author);
 
     messagesElement.appendChild(messageElement);
   }
